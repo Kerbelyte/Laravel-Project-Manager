@@ -1,0 +1,157 @@
+header {
+    background: steelblue;
+    border: ridge;
+}
+
+h1 {
+    padding-top: 30px;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    background-color: white;
+}
+
+.switch {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.active {
+    color: white;
+    background-color: rgb(4, 95, 170);
+    box-shadow: 0 2px 8px #777;
+}
+
+.switch>a {
+    color: white;
+    text-decoration: none;
+    margin: 35px;
+    padding: 10px 43px;
+    border: 1px solid white;
+    border-radius: 7px;
+}
+
+.switch>a:hover {
+    color: white;
+    background-color: rgb(4, 95, 170);
+    transition: 300ms linear;
+    box-shadow: 0 2px 8px #777;
+}
+
+form {
+    display: flex;
+    padding-bottom: 30px;
+}
+
+td>a {
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+    padding: 7px 15px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    font-size: small;
+}
+
+.delete {
+    background-color: #ff0000b8;
+    display: inline-flex;
+}
+
+.update {
+    background-color: #4CAF50;
+    display: inline-flex;
+}
+
+td>.delete:hover {
+    color: white;
+    background-color: darkred;
+    transition: 300ms linear;
+    box-shadow: 0 2px 8px #777;
+}
+
+td>.update:hover {
+    color: white;
+    background-color: darkgreen;
+    transition: 300ms linear;
+    box-shadow: 0 2px 8px #777;
+}
+
+.one {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-left: 65px;
+    float: left;
+    font-size: smaller;
+}
+
+.two {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-right: 65px;
+    float: right;
+    font-size: smaller;
+}
+
+footer {
+    width: 100%;
+    color: white;
+    background: steelblue;
+    border: ridge;
+}
+
+@media (max-width: 620px) {
+    .switch {
+        display: grid;
+        justify-content: center;
+    }
+    .switch>a {
+        margin: 10px;
+        padding: 3px 20px;
+    }
+    .table>:not(caption)>*>* {
+        padding: .2rem .2rem;
+    }
+    .table {
+        font-size: small;
+    }
+    .employees-form {
+        display: block;
+        padding-bottom: 30px;
+    }
+    .employees-form>.project-name {
+        display: block;
+        margin-top: 10px;
+    }
+    .projects-form {
+        display: block;
+    }
+    .projects-form>.employee-name {
+        display: block;
+        margin-top: 10px;
+    }
+    .footer {
+        display: flex;
+    }
+    .one {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 70px;
+        float: left;
+        font-size: smaller;
+    }
+    .two {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 70px;
+        float: left;
+        font-size: smaller;
+    }
+}
+
+.clear {
+    clear: both;
+}
