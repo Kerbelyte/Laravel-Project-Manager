@@ -23,11 +23,27 @@ class Project extends Model
         return rtrim($projects, ', ');
     }
 
-    public function addEmployee($id) {
-        $this->employees()->attach($id);
+    public function addEmployee($id) 
+    {
+        $found = false;
+        foreach($this->employees()->get() as $employee) {
+            if($id == $employee->id) {
+                $found = true;
+                break;
+            }
+        }
+        if(!$found) {
+            $this->employees()->attach($id);
+        }
     }
 
-    public function removeEmployees() {
+    public function removeEmployees() 
+    {
         $this->employees()->detach();
+    }
+
+    public function removeEmployee($id) 
+    {
+        $this->employees()->detach($id);
     }
 }

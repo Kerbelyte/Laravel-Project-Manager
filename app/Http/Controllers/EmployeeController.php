@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     public function index()
-    {   
+    {
         return view('employees', ['employees' => Employee::all()]);
     }
 
@@ -28,7 +28,9 @@ class EmployeeController extends Controller
         $em = new Employee();
         $em->employee_name = $request['employees_name'];
         if ($em->save()) {
-            $em->addProject($request->input('project_id'));
+            if($request->input('project_id') != 0) {
+                $em->addProject($request->input('project_id'));
+            }
             return redirect('/employees')->with('status_success', 'Employee successfully created!');
         } else {
             return redirect('/employees')->with('status_error', 'Failed to create employee!');
@@ -43,6 +45,27 @@ class EmployeeController extends Controller
         return redirect('/employees')->with('status_success', 'Employee deleted!');
     }
 
+    public function update($id, Request $request)
+    {
+        // $this->validate($request, [
+        //     'title' => 'required|unique:blogposts,title|max:5',
+        //     'text' => 'required',
+        // ]);
+        $em = Employee::find($id);
+        $em->employee_name = $request->input('name');
+        if ($em->save()) {
+            if($request->input('project_id') != 0) {
+                $em->addProject($request->input('project_id'));
+            }
+            return redirect('/employees')->with('status_success', 'Employee successfully updated!');
+        } else {
+            return redirect('/employees')->with('status_error', 'Failed to update employee!');
+        }
+    }
+    public function deleteProject($employeeId, $projectId) {
 
+        $pr = Employee::find($employeeId);
+        $pr->removeProject($projectId);
+        return redirect()->route('employees.show', $employeeId)->with('status_success', 'Project deleted!');
+    }
 }
-

@@ -28,20 +28,47 @@ class ProjectController extends Controller
 
         $pr = new Project();
         $pr->project_name = $request['project_name'];
-        if($pr->save()){
-            $pr->addEmployee($request->input('employee_id'));
+        if ($pr->save()) {
+            if ($request->input('employee_id') != 0) {
+                $pr->addEmployee($request->input('employee_id'));
+            }
             return redirect('/projects')->with('status_success', 'Project successfully created!');
         } else {
-           return redirect('/projects')->with('status_error', 'Failed to create project!');
-        }   
+            return redirect('/projects')->with('status_error', 'Failed to create project!');
+        }
     }
 
     public function destroy($id)
     {
-        
         $pr = Project::find($id);
         $pr->removeEmployees();
         $pr->delete();
         return redirect('/projects')->with('status_success', 'Project deleted!');
     }
+
+    public function update($id, Request $request)
+    {
+        // $this->validate($request, [
+        //     'title' => 'required|unique:blogposts,title|max:5',
+        //     'text' => 'required',
+        // ]);
+        $pr = Project::find($id);
+        $pr->project_name = $request->input('project_name');
+        if ($pr->save()) {
+            if ($request->input('employee_id') != 0) {
+                $pr->addEmployee($request->input('employee_id'));
+            }
+            return redirect('/projects')->with('status_success', 'Project successfully updated!');
+        } else {
+            return redirect('/projects')->with('status_error', 'Failed to update project!');
+        }
+    }
+
+    public function deleteEmployee($projectId, $employeeId) {
+
+        $pr = Project::find($projectId);
+        $pr->removeEmployee($employeeId);
+        return redirect()->route('projects.show', $projectId)->with('status_success', 'Employee deleted!');
+    }
+
 }

@@ -16,13 +16,13 @@
             <td style="width:30%">{{ $employee->employee_name}}</td>
             <td style="width:30%"> {{$employee->getProjectNames()}}</td>
             <td style="width:30%">
-                <a class="update" href="/employee/{{ $employee->id }}">
+                <a style="padding-right:40px; font-size: x-large; text-decoration: none;" class="update" href="{{ route('employees.update', $employee->id) }}">
                     <i class="far fa-edit"></i>
                 </a>
-                <form action="{{ route('employees.destroy', $employee['id']) }}" method="POST">
+                <a style="font-size: x-large; text-decoration: none;" href="{{ route('employees.destroy', $employee['id']) }}">
                     @method('DELETE') @csrf
-                    <input class="delete" type="submit" value="DELETE">
-                </form>
+                    <i class="fa fa-trash"></i>
+                </a>
             </td>
         </tr>
     @endforeach
