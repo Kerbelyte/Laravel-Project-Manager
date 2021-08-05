@@ -1,13 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
-
-    @if (session('status_success'))
-        <p style="color: green"><b>{{ session('status_success') }}</b></p>
-    @else
-        <p style="color: red"><b>{{ session('status_error') }}</b></p>
-    @endif
-
-    @error('employee_name')
+    @error('name')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <form style="justify-content: center; padding: 20px; display: flex"
@@ -27,6 +20,11 @@
             style="background-color: #4CAF50; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer;float: right; margin-left: 10px;"
             type="submit" name="update" value="Update">
     </form>
+    @if (session('status_success'))
+        <p style="color: green; justify-content: center; display: flex;"><b>{{ session('status_success') }}</b></p>
+    @else
+        <p style="color: red; justify-content: center; display: flex;"><b>{{ session('status_error') }}</b></p>
+    @endif
     <label style="justify-content: center; padding: 20px; display: flex;">Employee projects:
         @foreach ($employee->projects()->get() as $project)
             <div

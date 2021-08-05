@@ -22,7 +22,7 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'employee_name' => 'required|max:50'
+            'employees_name' => 'required|max:50'
         ]);
         $em = new Employee();
         $em->employee_name = $request['employees_name'];
@@ -47,7 +47,7 @@ class EmployeeController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'employee_name' => 'required|max:50'
+            'name' => 'required|max:50'
         ]);
         $em = Employee::find($id);
         $em->employee_name = $request->input('name');

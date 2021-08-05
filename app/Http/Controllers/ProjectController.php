@@ -23,7 +23,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'project_name' => 'required|unique:projects,project_name|max:30'
+            'project_name' => 'required|unique:projects,project_name|max:50'
         ]);
         $pr = new Project();
         $pr->project_name = $request['project_name'];
@@ -48,7 +48,7 @@ class ProjectController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'project_name' => 'required|unique:projects,project_name|max:30'
+            'project_name' => 'required|max:50'
         ]);
         $pr = Project::find($id);
         $pr->project_name = $request->input('project_name');

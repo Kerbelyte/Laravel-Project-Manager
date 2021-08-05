@@ -17,13 +17,7 @@
 
 <body class="antialiased">
     <div class="container">
-        @include('partials.header')
-    </div>
-    
-    <div class="container">
-        <div class="content">
-            @yield('content')
-        </div>
+        @include('layouts.app')
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
