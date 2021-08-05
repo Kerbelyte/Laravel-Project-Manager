@@ -22,10 +22,9 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'project_name' => 'required|unique:projects,project_name|max:30'
-        // ]);
-
+        $this->validate($request, [
+            'project_name' => 'required|unique:projects,project_name|max:30'
+        ]);
         $pr = new Project();
         $pr->project_name = $request['project_name'];
         if ($pr->save()) {
@@ -48,10 +47,9 @@ class ProjectController extends Controller
 
     public function update($id, Request $request)
     {
-        // $this->validate($request, [
-        //     'title' => 'required|unique:blogposts,title|max:5',
-        //     'text' => 'required',
-        // ]);
+        $this->validate($request, [
+            'project_name' => 'required|unique:projects,project_name|max:30'
+        ]);
         $pr = Project::find($id);
         $pr->project_name = $request->input('project_name');
         if ($pr->save()) {
