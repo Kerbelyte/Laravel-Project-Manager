@@ -39,4 +39,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/project/remove-employee/{projectId}/{employeeId}', [ProjectController::class, 'deleteEmployee'])->name('projects.deleteEmployee');
 });
 
-
+Route::any('/{any}', function () {
+    return view('errors/error-page');
+})->where('any', '.*');
