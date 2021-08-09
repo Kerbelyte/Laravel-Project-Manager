@@ -28,7 +28,7 @@ DB_PASSWORD='';
 11. Open the app in your browser;
 
 ```sh
-Log in information: Username: admin and Password: admin123
+Login information: Username: admin and Password: admin123
 ```
 
 ## App allow:
