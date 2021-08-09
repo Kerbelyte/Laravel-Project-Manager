@@ -25,13 +25,11 @@ DB_PASSWORD='';
 8. Execute comand `php artisan migrate` to create tables in database;
 9. Execute comand `php artisan db:seed` to add user;
 10. Execute comand `php artisan serve` and follow the link that is generated;
+11. Open the app in your browser;
 
-## Launch procedure:
-
-* Open the app in your browser:
-**Log in information:**  
-Username: admin
-Password: admin123
+```sh
+Log in information: Username: admin and Password: admin123
+```
 
 ## App allow:
 * Create, Read, Update and Delete employees and projects;
