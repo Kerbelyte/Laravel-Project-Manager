@@ -3,7 +3,9 @@
     @error('project_name')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-
+    <nav class="container" style="background-color: steelblue; justify-content: center; display: flex;">
+        <a class="" ; style="font-size: 50px; color: #ffffff;" href="/">Project Manager</a>
+    </nav>
     <form style="justify-content: center; padding: 20px; display: flex"
         action="{{ route('projects.update', $project['id']) }}" method="POST">
         @method('PUT') @csrf

@@ -3,6 +3,9 @@
     @error('name')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
+    <nav class="container" style="background-color: steelblue; justify-content: center; display: flex;">
+        <a class="" ; style="font-size: 50px; color: #ffffff;" href="/">Employee Manager</a>
+    </nav>
     <form style="justify-content: center; padding: 20px; display: flex"
         action="{{ route('employees.update', $employee['id']) }}" method="POST">
         @method('PUT') @csrf

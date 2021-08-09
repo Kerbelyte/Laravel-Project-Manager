@@ -61,7 +61,6 @@ class EmployeeController extends Controller
         }
     }
     public function deleteProject($employeeId, $projectId) {
-
         $pr = Employee::find($employeeId);
         $pr->removeProject($projectId);
         return redirect()->route('employees.show', $employeeId)->with('status_success', 'Project deleted!');

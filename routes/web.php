@@ -21,20 +21,22 @@ Route::get('/', function () {
     return view('home');
 })->name('index');
 
-Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
-Route::get('/employee/{id}', [EmployeeController::class,'show'])->name('employees.show');
-Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
-Route::get('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
-Route::put('/employee/{id}', [EmployeeController::class, 'update'])->name('employees.update');
-Route::get('/employee/remove-project/{employeeId}/{projectId}', [EmployeeController::class, 'deleteProject'])->name('employees.deleteProject');
+Auth::routes(['register' => false]);
 
-Route::get('/projects', [ProjectController::class,'index'])->name('projects.index');
-Route::get('/project/{id}', [ProjectController::class,'show'])->name('projects.show');
-Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
-Route::get('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
-Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
-Route::get('/project/remove-employee/{projectId}/{employeeId}', [ProjectController::class, 'deleteEmployee'])->name('projects.deleteEmployee');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+    Route::get('/employee/{id}', [EmployeeController::class, 'show'])->name('employees.show');
+    Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+    Route::get('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+    Route::put('/employee/{id}', [EmployeeController::class, 'update'])->name('employees.update');
+    Route::get('/employee/remove-project/{employeeId}/{projectId}', [EmployeeController::class, 'deleteProject'])->name('employees.deleteProject');
 
-Auth::routes();
+    Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/project/{id}', [ProjectController::class, 'show'])->name('projects.show');
+    Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+    Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
+    Route::get('/project/remove-employee/{projectId}/{employeeId}', [ProjectController::class, 'deleteEmployee'])->name('projects.deleteEmployee');
+});
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
