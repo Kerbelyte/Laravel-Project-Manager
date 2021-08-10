@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <nav class="container" style="background-color: steelblue; justify-content: center; display: flex;">
-        <a class="" ; style="font-size: 50px; color: #ffffff;" href="/">Employee Manager</a>
+        <a style="font-size: 50px; color: #ffffff;" href="/">Manager system</a>
     </nav>
     <table class="table">
         <thead>

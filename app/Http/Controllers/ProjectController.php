@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\Employee;
 
 
 
@@ -17,7 +18,7 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        return view('ProjectForm', ['project' => Project::find($id)]);
+        return view('ProjectForm', ['project' => Project::find($id), 'employees' => Employee::all()]);
     }
 
     public function store(Request $request)

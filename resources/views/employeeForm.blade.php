@@ -4,7 +4,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <nav class="container" style="background-color: steelblue; justify-content: center; display: flex;">
-        <a class="" ; style="font-size: 50px; color: #ffffff;" href="/">Employee Manager</a>
+        <a style="font-size: 50px; color: #ffffff;" href="/">Manager system</a>
     </nav>
     <form style="justify-content: center; padding: 20px; display: flex"
         action="{{ route('employees.update', $employee['id']) }}" method="POST">
@@ -15,7 +15,7 @@
         <label style="padding: 12px 12px 12px 12px; display: inline-block;" for="name">Project name:</label>
         <select style="padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: medium;" name="project_id">
             <option value=0></option>
-            @foreach (App\Models\Project::all() as $project)
+            @foreach ($projects as $project)
                 <option value="{{ $project['id'] }}">{{ $project['project_name'] }}</option>
             @endforeach
         </select>

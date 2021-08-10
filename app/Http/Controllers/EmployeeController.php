@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 
 class EmployeeController extends Controller
@@ -16,7 +17,7 @@ class EmployeeController extends Controller
 
     public function show($id)
     {
-        return view('employeeForm', ['employee' => Employee::find($id)]);
+        return view('employeeForm', ['employee' => Employee::find($id), 'projects' => Project::all()]);
     }
 
     public function store(Request $request)
